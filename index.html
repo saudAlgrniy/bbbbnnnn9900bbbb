@@ -1,0 +1,945 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Madimi+One&display=swap" rel="stylesheet">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Blaka+Hollow&family=Jomhuria&family=Madimi+One&family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
+
+<title>بحث عن أفلام</title>
+
+<style>
+
+/* ال CSS الذي أرسلته سابقًا */
+.download-links a {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: #C8BBBE; /* تغيير اللون إلى الأبيض */
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+    border: 2px solid #000; /* تغيير لون الحواف إلى الأسود */
+}
+
+body {
+    background-color: #fff;
+    font-family: Arial, sans-serif;
+    text-align: center;
+    direction: rtl;
+    overflow: hidhis;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+    direction: rtl;
+}
+h1 {
+    margin-top: 20px;
+}
+form {
+    margin-bottom: 20px;
+}
+
+#results {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+.movie {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 300px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+.movie img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+/* تصميم بطاقة العرض للفيلم */
+.movie-card {
+    border: 2px solid #000;
+    border-radius: 5px;
+    margin: 10px;
+    padding: 10px;
+    width: 400px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+.movie-card img {
+    width: 100%;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.movie-card .title {
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 5px;
+}
+
+.movie-card .description {
+    color: #666;
+    margin-bottom: 10px;
+}
+
+/* تنسيق الروابط */
+.download-links a {
+    display: inline-block;
+    margin-right: 10px;
+    background-color: #007bff;
+    color: #fff;
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.comic-button {
+    display: inline-block;
+    padding: 10px 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    color: #fff;
+    background-color: #ff5252;
+    border: 2px solid #000;
+    border-radius: 10px;
+    box-shadow: 5px 5px 0px #000;
+    transition: all 0.3s ease;
+    scale: 0.7;
+}
+
+.comic-button:hover {
+    background-color: #fff;
+    color: #ff5252;
+    border: 2px solid #ff5252;
+    box-shadow: 5px 5px 0px #ff5252;
+    scale: 1;
+}
+
+.comic-button:active {
+    background-color: #fcf414;
+    box-shadow: none;
+    transform: translateY(4px);
+}
+
+.input-container {
+    width: 220px;
+    position: relative;
+}
+
+.icon {
+    position: absolute;
+    right: 10px;
+    top: calc(50% + 5px);
+    transform: translateY(calc(-50% - 5px));
+    margin-right: 25px;
+}
+
+.input {
+    width: 150%;
+    height: 25px;
+    padding: 10px;
+    transition: .2s linear;
+    border: 2.5px solid black;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    direction: ltr; /* تحديد اتجاه الكتابة من اليسار إلى اليمين */
+    margin-right: 25px;
+    text-transform: lowercase;
+    text-transform: none;
+}
+
+.input:focus {
+    outline: none;
+    border: 0.5px solid black;
+    box-shadow: -5px -5px 0px black;
+}
+
+.input-container:hover > .icon {
+    animation: anim 1s linear infinite;
+}
+
+@keyframes anim {
+    0%, 100% {
+        transform: translateY(calc(-50% - 5px)) scale(1);
+    }
+    50% {
+        transform: translateY(calc(-50% - 5px)) scale(1.1);
+    }
+}
+
+h1 {
+    margin-top: 20px;
+    font-family: "Blaka Hollow", sans-serif; /* تغيير الخط إلى Arial Black أو أي خط آخر */
+}
+
+.center {
+    position: absolute;
+    transform: translateX(-50%);
+    left: 50%;
+}
+
+.container {
+    height: 31.25em;
+    width: 21.87em;
+    margin-top: -325px;
+}
+
+.rope {
+    height: 13.62em;
+    width: 0.15em;
+    background-color: #ffffff;
+    animation: swing 2s infinite;
+}
+
+@keyframes swing {
+    50% {
+        transform: translateY(-4em);
+    }
+}
+
+.legs {
+    height: 1.12em;
+    width: 7.5em;
+    background-color: transparent;
+    box-shadow: 0 0 0 0.12em #140243, 0 0 0 1.06em #1b1676, 0 0 0 1.18em #140243;
+    top: 12.5em;
+    border-radius: 3.12em;
+}
+
+.boot-l,
+.boot-r {
+    height: 1.25em;
+    width: 2.5em;
+    background-color: #e32832;
+    position: absolute;
+    border: 0.12em solid #140243;
+    bottom: 1.12em;
+}
+
+.boot-l {
+    left: 1em;
+}
+
+.boot-r {
+    transform: rotateY(180deg);
+    left: 3.81em;
+}
+
+.boot-l:before,
+.boot-r:before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 1.12em solid #140243;
+    border-left: 1.18em solid transparent;
+    bottom: 1.31em;
+    left: 1.46em;
+}
+
+.boot-l:after,
+.boot-r:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-bottom: 1.12em solid #e32832;
+    border-left: 1em solid transparent;
+    right: 0;
+        top: -0.93em;
+}
+
+.costume {
+    height: 6.25em;
+    width: 5.62em;
+    background: linear-gradient(
+        to right,
+        #1b1676 20%,
+        #e32832 20%,
+        #e32832 80%,
+        #1b1676 80%
+    );
+    border: 0.12em solid #140243;
+    top: 14.68em;
+}
+
+.spider {
+    height: 1.87em;
+    width: 0.93em;
+    background-color: #140243;
+    border-radius: 45%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: calc(50% + 0.93em);
+    left: 50%;
+}
+
+.s1,
+.s3 {
+    height: 7.5em;
+    width: 2.5em;
+    border-radius: 0 0 1.37em 1.37em;
+    border-bottom: 0.12em solid #140243;
+    position: absolute;
+}
+
+.s2,
+.s4 {
+    height: 7.5em;
+    width: 3.12em;
+    border-radius: 0 0 1.56em 1.56em;
+    border-bottom: 0.12em solid #140243;
+    position: absolute;
+}
+
+.s1,
+.s2,
+.s3,
+.s4 {
+    left: 50%;
+}
+
+.s1 {
+    bottom: 1.43em;
+}
+
+.s2 {
+    bottom: 0.93em;
+}
+
+.s3,
+.s4 {
+    transform: translateX(-50%) rotateX(180deg);
+}
+
+.s3 {
+    top: 1.43em;
+}
+
+.s4 {
+    top: 0.93em;
+}
+
+.belt {
+    height: 0.43em;
+    width: 5.87em;
+    background-color: #e32832;
+    border: 0.12em solid #140243;
+    top: -0.12em;
+}
+
+.hand-r,
+.hand-l {
+    height: 8.12em;
+    background: linear-gradient(
+        #e32832 4.6em,
+        #140243 4.6em,
+        #140243 4.75em,
+        #1b1676 4.75em,
+        #1b1676 8.12em
+    );
+    width: 1.12em;
+    border: 0.12em solid #140243;
+    border-radius: 1.25em;
+    position: absolute;
+    transform-origin: bottom;
+    bottom: -0.12em;
+}
+
+.hand-r {
+    right: -0.75em;
+    transform: rotate(-22deg);
+}
+
+.hand-l {
+    left: -0.75em;
+    transform: rotate(22deg);
+}
+
+.neck {
+    height: 0.37em;
+    width: 1.25em;
+    background-color: #e32832;
+    bottom: -0.62em;
+    border: 0.12em solid #140243;
+}
+
+.mask {
+    height: 4.65em;
+    width: 4.06em;
+    background-color: #e32832;
+    border-radius: 50% 50% 50% 50% / 54% 54% 46% 46%;
+    border: 0.12em solid #140243;
+    top: 6.56em;
+}
+
+.eye-l,
+.eye-r {
+    height: 0.68em;
+    width: 1.37em;
+    background-color: #ffffff;
+    border-radius: 1.37em 1.37em 0 0;
+    border: 0.12em solid #140243;
+    position: absolute;
+    top: 2.1em;
+}
+
+.eye-l {
+    left: 0.3em;
+}
+
+.eye-r {
+    right: 0.3em;
+}
+
+.cover {
+    height: 3.12em;
+    width: 0.15em;
+    background-color: #ffffff;
+    bottom: 8.12em;
+}
+
+@media screen and (min-width: 600px) {
+    .container {
+        font-size: 20px;
+    }
+}
+.movie {
+    border: 2px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.🤚 {
+  --skin-color: #E4C560;
+  --tap-speed: 0.6s;
+  --tap-stagger: 0.1s;
+  position: relative;
+  width: 80px;
+  height: 60px;
+  margin-left: 80px;
+}
+
+:root {
+    --light-bg-color: #fff; /* لون الخلفية في الوضع العادي */
+    --light-font-color: #323232; /* لون النص في الوضع العادي */
+    --dark-bg-color: #323232; /* لون الخلفية في الوضع المظلم */
+    --dark-font-color: #fff; /* لون النص في الوضع المظلم */
+  }
+
+  body {
+    background-color: var(--light-bg-color);
+    color: var(--light-font-color);
+    transition: background-color 0.3s, color 0.3s;
+  }
+
+  .switch {
+    --input-focus: #2d8cf0;
+    --main-color: #323232;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 30px;
+    width: 50px;
+    height: 20px;
+  }
+
+  .toggle {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    box-sizing: border-box;
+    border-radius: 5px;
+    border: 2px solid var(--main-color);
+    box-shadow: 4px 4px var(--main-color);
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--light-bg-color);
+    transition: 0.3s;
+  }
+
+  .slider:before {
+    box-sizing: border-box;
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    border: 2px solid var(--main-color);
+    border-radius: 5px;
+    left: -2px;
+    bottom: 2px;
+    background-color: var(--light-bg-color);
+    box-shadow: 0 3px 0 var(--main-color);
+    transition: 0.3s;
+  }
+
+  .toggle:checked + .slider {
+    background-color: var(--input-focus);
+  }
+
+  .toggle:checked + .slider:before {
+    transform: translateX(30px);
+  }
+
+
+
+.center {
+  position: absolute;
+  transform: translateX(-50%);
+  left: 50%;
+}
+
+.container {
+  height: 31.25em;
+  width: 21.87em;
+  margin-top: -325px;
+}
+
+.rope {
+  height: 13.62em;
+  width: 0.15em;
+  background-color: #ffffff;
+  animation: swing 2s infinite;
+}
+
+@keyframes swing {
+  50% {
+    transform: translateY(-4em);
+  }
+}
+
+.legs {
+  height: 1.12em;
+  width: 7.5em;
+  background-color: transparent;
+  box-shadow: 0 0 0 0.12em #140243, 0 0 0 1.06em #1b1676, 0 0 0 1.18em #140243;
+  top: 12.5em;
+  border-radius: 3.12em;
+}
+
+.boot-l,
+.boot-r {
+  height: 1.25em;
+  width: 2.5em;
+  background-color: #e32832;
+  position: absolute;
+  border: 0.12em solid #140243;
+  bottom: 1.12em;
+}
+
+.boot-l {
+  left: 1em;
+}
+
+.boot-r {
+  transform: rotateY(180deg);
+  left: 3.81em;
+}
+
+.boot-l:before,
+.boot-r:before {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 1.12em solid #140243;
+  border-left: 1.18em solid transparent;
+  bottom: 1.31em;
+  left: 1.46em;
+}
+
+.boot-l:after,
+.boot-r:after {
+  content: "";
+  position: absolute;
+  width: 0;
+  height: 0;
+  border-bottom: 1.12em solid #e32832;
+  border-left: 1em solid transparent;
+  right: 0;
+  top: -0.93em;
+}
+
+.costume {
+  height: 6.25em;
+  width: 5.62em;
+  background: linear-gradient(
+    to right,
+    #1b1676 20%,
+    #e32832 20%,
+    #e32832 80%,
+    #1b1676 80%
+  );
+  border: 0.12em solid #140243;
+  top: 14.68em;
+}
+
+.spider {
+  height: 1.87em;
+  width: 0.93em;
+  background-color: #140243;
+  border-radius: 45%;
+  position: absolute;
+  transform: translate(-50%, -50%);
+  top: calc(50% + 0.93em);
+  left: 50%;
+}
+
+.s1,
+.s3 {
+  height: 7.5em;
+  width: 2.5em;
+  border-radius: 0 0 1.37em 1.37em;
+  border-bottom: 0.12em solid #140243;
+  position: absolute;
+}
+
+.s2,
+.s4 {
+  height: 7.5em;
+  width: 3.12em;
+  border-radius: 0 0 1.56em 1.56em;
+  border-bottom: 0.12em solid #140243;
+  position: absolute;
+}
+
+.s1,
+.s2,
+.s3,
+.s4 {
+  left: 50%;
+}
+
+.s1 {
+  bottom: 1.43em;
+}
+
+.s2 {
+  bottom: 0.93em;
+}
+
+.s3,
+.s4 {
+  transform: translateX(-50%) rotateX(180deg);
+}
+
+.s3 {
+  top: 1.43em;
+}
+
+.s4 {
+  top: 0.93em;
+}
+
+.belt {
+  height: 0.43em;
+  width: 5.87em;
+  background-color: #e32832;
+  border: 0.12em solid #140243;
+  top: -0.12em;
+}
+
+.hand-r,
+.hand-l {
+  height: 8.12em;
+  background: linear-gradient(
+    #e32832 4.6em,
+    #140243 4.6em,
+    #140243 4.75em,
+    #1b1676 4.75em,
+    #1b1676 8.12em
+  );
+  width: 1.12em;
+  border: 0.12em solid #140243;
+  border-radius: 1.25em;
+  position: absolute;
+  transform-origin: bottom;
+  bottom: -0.12em;
+}
+
+.hand-r {
+  right: -0.75em;
+  transform: rotate(-22deg);
+}
+
+.hand-l {
+  left: -0.75em;
+  transform: rotate(22deg);
+}
+
+.neck {
+  height: 0.37em;
+  width: 1.25em;
+  background-color: #e32832;
+  bottom: -0.62em;
+  border: 0.12em solid #140243;
+}
+
+.mask {
+  height: 4.65em;
+  width: 4.06em;
+  background-color: #e32832;
+  border-radius: 50% 50% 50% 50% / 54% 54% 46% 46%;
+  border: 0.12em solid #140243;
+  top: 6.56em;
+}
+
+.eye-l,
+.eye-r {
+  height: 0.68em;
+  width: 1.37em;
+  background-color: #ffffff;
+  border-radius: 1.37em 1.37em 0 0;
+  border: 0.12em solid #140243;
+  position: absolute;
+  top: 2.1em;
+}
+
+.eye-l {
+  left: 0.3em;
+}
+
+.eye-r {
+  right: 0.3em;
+}
+
+.cover {
+  height: 3.12em;
+  width: 0.15em;
+  background-color: #ffffff;
+  bottom: 8.12em;
+}
+
+@media screen and (min-width: 600px) {
+  .container {
+    font-size: 20px;
+  }
+
+}
+
+ /* Madimi One */
+    .madimi-one-regular {
+        font-family: "Madimi One", sans-serif;
+        font-weight: 100;
+        font-style: normal;
+    }
+
+
+.readex-pro-custom {
+  font-family: "Readex Pro", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 1000; /* قم بتغيير القيمة حسب الوزن المطلوب */
+  font-style: normal;
+  font-variation-settings: "HEXP" 0;
+}
+
+
+/* تصميم قائمة المنسدلة */
+#player-select {
+  width: 110px;
+  padding: 5px;
+  border: 1px solid black;
+  border-radius: 5px;
+  font-size: 16px;
+  background-color: transparent;
+  color: black;
+  appearance: none; /* لإزالة الأسهم الافتراضية في بعض المتصفحات */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+/* إزالة لون الزرقة عند النقر */
+#player-select:focus {
+  outline: none;
+}
+
+/* إضافة المثلث داخل القائمة المنسدلة */
+#player-select {
+  padding-right: 40px;
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="%23000000"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right -5px center;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background-color: white;
+}
+
+/* تصميم الخيارات داخل قائمة المنسدلة */
+#player-select option {
+  background-color: #f2f2f2;
+  color: black;
+}
+
+/* تغيير لون الخلفية ولون النص بناءً على النمط المظلم */
+body {
+  --dark-bg-color: #1a1a1a;
+  --dark-font-color: #ffffff;
+  --light-bg-color: #ffffff;
+  --light-font-color: #000000;
+}
+</style>
+
+</head>
+<body>
+
+<label class="switch">
+    <input class="toggle" type="checkbox" onclick="toggleTheme()">
+    <span class="slider"></span>
+  </label>
+
+
+<div class="container center">
+  <div class="rope center">
+    <div class="legs center">
+      <div class="boot-l"></div>
+      <div class="boot-r"></div>
+    </div>
+    <div class="costume center">
+      <div class="spider">
+        <div class="s1 center"></div>
+        <div class="s2 center"></div>
+        <div class="s3"></div>
+        <div class="s4"></div>
+      </div>
+      <div class="belt center"></div>
+      <div class="hand-r"></div>
+      <div class="hand-l"></div>
+      <div class="neck center"></div>
+      <div class="mask center">
+        <div class="eye-l"></div>
+        <div class="eye-r"></div>
+      </div>
+      <div class="cover center"></div>
+    </div>
+</div></div>
+
+<br><br><br><br><h1 class="readex-pro-custom">البحث عن الافلام</h1>
+<h1 class="madimi-one-regular">Searching for movies</h1>
+
+<form id="searchForm">
+    <div class="input-container">
+        <input type="text" name="text" class="input" placeholder="ابحث...">
+        <span class="icon"> 
+            <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path> <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path> <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path> </g></svg>
+        </span>
+    </div>
+
+<br>
+        <select id="player-select">
+      
+            <option value="webtor">Webtor</option>
+            <option value="download">تنزيل</option>
+        </select>&nbsp;
+
+    </div>
+
+    <button type="submit" class="comic-button">بحث</button>
+    <div><br>
+
+    </div>
+</form>
+
+<div id="results"></div>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#searchForm').submit(function(event){
+            event.preventDefault();
+            searchMovies();
+        });
+
+        $('#player-select').change(function() {
+            searchMovies();
+        });
+
+        function searchMovies() {
+            var searchTerm = $('.input').val();
+            var playerOption = $('#player-select').val();
+            $.ajax({
+                url: 'https://yts.mx/api/v2/list_movies.json',
+                method: 'GET',
+                data: {
+                    query_term: searchTerm
+                },
+                success: function(response){
+                    displayResults(response.data.movies, playerOption);
+                },
+                error: function(){
+                    $('#results').html('<p>حدث خطأ أثناء جلب البيانات. يرجى المحاولة مرة أخرى.</p>');
+                }
+            });
+        }
+
+        function displayResults(movies, playerOption){
+            var html = '';
+            if(movies.length > 0){
+                movies.forEach(function(movie){
+                    html += '<div class="movie">';
+                    html += '<h2>' + movie.title_long + '</h2>';
+                    html += '<img src="' + movie.medium_cover_image + '" alt="' + movie.title_long + '">';
+                    html += '<p>تقييم الفيلم: ' + movie.rating + '</p>';
+                    html += '<p>التصنيف: ' + movie.genres.join(', ') + '</p>';
+                    html += '<div class="download-links">';
+                    movie.torrents.forEach(function(torrent){
+                        var downloadLink;
+                        if(playerOption === 'webtor') {
+                            downloadLink = "https://webtor.io/#/" + torrent.url.replace("https://yts.mx/torrent/download/", "");
+                        } else if(playerOption === 'download') {
+                            downloadLink =  torrent.url;
+                        }
+                        html += '<a href="' + downloadLink + '">' + torrent.quality + ' ' + torrent.type + '</a>';
+                    });
+                    html += '</div>';
+                    html += '<p>ملخص: ' + movie.summary + '</p>';
+                    html += '</div>';
+                });
+            } else {
+                html = '<p>لا توجد نتائج لعرضها.</p>';
+            }
+            $('#results').html(html);
+        }
+    });
+
+    function toggleTheme() {
+    const body = document.body;
+    const toggle = document.querySelector('.toggle');
+
+    if (toggle.checked) {
+      body.style.backgroundColor = 'var(--dark-bg-color)';
+      body.style.color = 'var(--dark-font-color)';
+    } else {
+      body.style.backgroundColor = 'var(--light-bg-color)';
+      body.style.color = 'var(--light-font-color)';
+    }
+  }
+</script>
+</body>
+</html>
