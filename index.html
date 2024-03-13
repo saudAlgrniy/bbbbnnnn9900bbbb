@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="ar">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -12,8 +13,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Blaka+Hollow&family=Jomhuria&family=Madimi+One&family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
 
-<title>بحث عن أفلام</title>
 
+<title>بحث عن الأفلام</title>
 <style>
 
 /* ال CSS الذي أرسلته سابقًا */
@@ -804,43 +805,79 @@ body {
   --light-bg-color: #ffffff;
   --light-font-color: #000000;
 }
-</style>
 
+
+/* أسلوب زر الترجمة */
+.translate-container {
+    display: block;
+    text-align: center;
+}
+
+
+/* أسلوب زر الترجمة */
+.translate-btn {
+    background-color: white; /* لون الخلفية */
+    color: black; /* لون النص */
+    border: 2px solid black; /* سمك ولون الحدود */
+    padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition: all 0.3s ease-in-out;
+ 
+    top: 0px; 
+    left: 20px;
+}
+
+.translate-btn:hover {
+    background-color: #f2f2f2; /* تغيير لون الخلفية عند تحويل المؤشر */
+}
+
+.translate-btn:active {
+    background-color: #e6e6e6; /* تغيير لون الخلفية عند الضغط */
+}
+
+</style>
 </head>
 <body>
 
 <label class="switch">
     <input class="toggle" type="checkbox" onclick="toggleTheme()">
     <span class="slider"></span>
-  </label>
-
+</label>
 
 <div class="container center">
-  <div class="rope center">
-    <div class="legs center">
-      <div class="boot-l"></div>
-      <div class="boot-r"></div>
+    <div class="rope center">
+        <div class="legs center">
+            <div class="boot-l"></div>
+            <div class="boot-r"></div>
+        </div>
+        <div class="costume center">
+            <div class="spider">
+                <div class="s1 center"></div>
+                <div class="s2 center"></div>
+                <div class="s3"></div>
+                <div class="s4"></div>
+            </div>
+            <div class="belt center"></div>
+            <div class="hand-r"></div>
+            <div class="hand-l"></div>
+            <div class="neck center"></div>
+            <div class="mask center">
+                <div class="eye-l"></div>
+                <div class="eye-r"></div>
+            </div>
+            <div class="cover center"></div>
+        </div>
     </div>
-    <div class="costume center">
-      <div class="spider">
-        <div class="s1 center"></div>
-        <div class="s2 center"></div>
-        <div class="s3"></div>
-        <div class="s4"></div>
-      </div>
-      <div class="belt center"></div>
-      <div class="hand-r"></div>
-      <div class="hand-l"></div>
-      <div class="neck center"></div>
-      <div class="mask center">
-        <div class="eye-l"></div>
-        <div class="eye-r"></div>
-      </div>
-      <div class="cover center"></div>
-    </div>
-</div></div>
+</div>
 
-<br><br><br><br><h1 class="readex-pro-custom">البحث عن الافلام</h1>
+<br><br><br><br>
+<h1 class="readex-pro-custom">البحث عن الأفلام</h1>
 <h1 class="madimi-one-regular">Searching for movies</h1>
 
 <form id="searchForm">
@@ -851,95 +888,99 @@ body {
         </span>
     </div>
 
-<br>
-        <select id="player-select">
-      
-            <option value="webtor">Webtor</option>
-            <option value="download">تنزيل</option>
-        </select>&nbsp;
+    <br>
+    <select id="player-select">  
+        <option value="webtor">Webtor</option>
+        <option value="download">تنزيل</option>
+    </select>&nbsp;
 
     </div>
 
     <button type="submit" class="comic-button">بحث</button>
-    <div><br>
-
-    </div>
+    <div><br></div>
 </form>
 
 <div id="results"></div>
 
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>
-    $(document).ready(function(){
-        $('#searchForm').submit(function(event){
-            event.preventDefault();
-            searchMovies();
-        });
-
-        $('#player-select').change(function() {
-            searchMovies();
-        });
-
-        function searchMovies() {
-            var searchTerm = $('.input').val();
-            var playerOption = $('#player-select').val();
-            $.ajax({
-                url: 'https://yts.mx/api/v2/list_movies.json',
-                method: 'GET',
-                data: {
-                    query_term: searchTerm
-                },
-                success: function(response){
-                    displayResults(response.data.movies, playerOption);
-                },
-                error: function(){
-                    $('#results').html('<p>حدث خطأ أثناء جلب البيانات. يرجى المحاولة مرة أخرى.</p>');
-                }
-            });
-        }
-
-        function displayResults(movies, playerOption){
-            var html = '';
-            if(movies.length > 0){
-                movies.forEach(function(movie){
-                    html += '<div class="movie">';
-                    html += '<h2>' + movie.title_long + '</h2>';
-                    html += '<img src="' + movie.medium_cover_image + '" alt="' + movie.title_long + '">';
-                    html += '<p>تقييم الفيلم: ' + movie.rating + '</p>';
-                    html += '<p>التصنيف: ' + movie.genres.join(', ') + '</p>';
-                    html += '<div class="download-links">';
-                    movie.torrents.forEach(function(torrent){
-                        var downloadLink;
-                        if(playerOption === 'webtor') {
-                            downloadLink = "https://webtor.io/#/" + torrent.url.replace("https://yts.mx/torrent/download/", "");
-                        } else if(playerOption === 'download') {
-                            downloadLink =  torrent.url;
-                        }
-                        html += '<a href="' + downloadLink + '">' + torrent.quality + ' ' + torrent.type + '</a>';
-                    });
-                    html += '</div>';
-                    html += '<p>ملخص: ' + movie.summary + '</p>';
-                    html += '</div>';
-                });
-            } else {
-                html = '<p>لا توجد نتائج لعرضها.</p>';
-            }
-            $('#results').html(html);
-        }
+$(document).ready(function(){
+    $('#searchForm').submit(function(event){
+        event.preventDefault();
+        searchMovies();
     });
 
-    function toggleTheme() {
+    $('#player-select').change(function() {
+        searchMovies();
+    });
+
+    $(document).on('click', '.translate-btn', function() {
+        var imdbCode = $(this).data('imdb');
+        window.location.href = 'https://yifysubtitles.ch/movie-imdb/' + imdbCode;
+    });
+
+    function searchMovies() {
+        var searchTerm = $('.input').val();
+        var playerOption = $('#player-select').val();
+        $.ajax({
+            url: 'https://yts.mx/api/v2/list_movies.json',
+            method: 'GET',
+            data: {
+                query_term: searchTerm
+            },
+            success: function(response){
+                displayResults(response.data.movies, playerOption);
+            },
+            error: function(){
+                $('#results').html('<p>حدث خطأ أثناء جلب البيانات. يرجى المحاولة مرة أخرى.</p>');
+            }
+        });
+    }
+
+    function displayResults(movies, playerOption){
+        var html = '';
+        if(movies.length > 0){
+            movies.forEach(function(movie){
+                html += '<div class="movie">';
+                html += '<h2>' + movie.title_long + '</h2>';
+                html += '<img src="' + movie.medium_cover_image + '" alt="' + movie.title_long + '">';
+                html += '<p>تقييم الفيلم: ' + movie.rating + '</p>';
+                html += '<p>التصنيف: ' + movie.genres.join(', ') + '</p>';
+                html += '<div class="download-links">';
+                movie.torrents.forEach(function(torrent){
+                    var downloadLink;
+                    if(playerOption === 'webtor') {
+                        downloadLink = "https://webtor.io/#/" + torrent.url.replace("https://yts.mx/torrent/download/", "");
+                    } else if(playerOption === 'download') {
+                        downloadLink =  torrent.url;
+                    }
+                    html += '<a href="' + downloadLink + '">' + torrent.quality + ' ' + torrent.type + '</a>';
+                });
+                html += '</div>';
+                html += '<div class="translate-container">';
+                html += '<button class="translate-btn" data-imdb="' + movie.imdb_code + '">CC</button>';
+                html += '</div>';
+                html += '</div>';
+            });
+        } else {
+            html = '<p>لا توجد نتائج لعرضها.</p>';
+        }
+        $('#results').html(html);
+    }
+});
+
+function toggleTheme() {
     const body = document.body;
     const toggle = document.querySelector('.toggle');
 
     if (toggle.checked) {
-      body.style.backgroundColor = 'var(--dark-bg-color)';
-      body.style.color = 'var(--dark-font-color)';
+        body.style.backgroundColor = 'var(--dark-bg-color)';
+        body.style.color = 'var(--dark-font-color)';
     } else {
-      body.style.backgroundColor = 'var(--light-bg-color)';
-      body.style.color = 'var(--light-font-color)';
+        body.style.backgroundColor = 'var(--light-bg-color)';
+        body.style.color = 'var(--light-font-color)';
     }
-  }
+}
 </script>
 </body>
 </html>
