@@ -2,7 +2,6 @@
 <html lang="ar">
 <head>
 
-
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
@@ -14,13 +13,19 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Blaka+Hollow&family=Jomhuria&family=Madimi+One&family=Readex+Pro:wght@160..700&display=swap" rel="stylesheet">
 
-    <title>افلام</title>
 
-    <link rel="icon" href="cinema.png">
+    <title>بحث عن الأفلام</title>
     <style>
 
-/* ال CSS الذي أرسلته سابقًا */
-.download-links a {
+    .custom-imdb-icon {
+    width: 40px; /* تعيين عرض الصورة */
+    height: auto; /* تعيين الارتفاع ليكون تلقائيًا مع الحفاظ على النسبة */
+    position: relative; /* تعيين العنصر الأساسي بوضع نسبي */
+    bottom: -13px; /* نقل الصورة إلى الأسفل بمقدار 10 بكسل */
+}
+
+
+        .download-links a {
     display: inline-block;
     margin-right: 10px;
     background-color: #007bff;
@@ -62,14 +67,10 @@ form {
     border-radius: 5px;
     margin: 10px;
     padding: 10px;
-    width: 300px;
+    width: 290px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
-.movie img {
-    width: 100%;
-    border-radius: 5px;
-    margin-bottom: 10px;
-}
+
 
 /* تصميم بطاقة العرض للفيلم */
 .movie-card {
@@ -81,11 +82,14 @@ form {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-.movie-card img {
+
+/* تطبيق القواعد على الصور داخل .movie img باستثناء الرمز IMDb */
+.movie img:not(.custom-imdb-icon) {
     width: 100%;
     border-radius: 5px;
     margin-bottom: 10px;
 }
+
 
 .movie-card .title {
     font-weight: bold;
@@ -944,13 +948,12 @@ body {
                 var searchTerm = $('.input').val();
                 var playerOption = $('#player-select').val();
 
-                // التحقق مما إذا كانت قيمة الحقل فارغة
                 if (searchTerm.trim() === '') {
-                    $('.input').addClass('error'); // إضافة الكلاس لتغيير لون النص إلى الأحمر
+                    $('.input').addClass('error');
                     $('.input').attr('placeholder', 'يجب ادخال اسم الفيلم');
-                    return; // توقف عن إرسال الطلب AJAX في حالة عدم ملأ الحقل
+                    return;
                 } else {
-                    $('.input').removeClass('error'); // إزالة الكلاس لإعادة لون النص إلى الأسود
+                    $('.input').removeClass('error');
                 }
 
                 $.ajax({
@@ -960,11 +963,9 @@ body {
                         query_term: searchTerm
                     },
                     success: function(response){
-                        // استعراض النتائج في حالة وجودها
                         displayResults(response.data.movies, playerOption);
                     },
                     error: function(){
-                        // عرض رسالة الخطأ باللون الأحمر داخل الحقل
                         $('.input').addClass('error');
                         $('.input').attr('placeholder', 'حدث خطأ أثناء جلب البيانات. يرجى المحاولة مرة أخرى.');
                     }
@@ -978,9 +979,8 @@ body {
                         html += '<div class="movie">';
                         html += '<h2>' + movie.title_long + '</h2>';
                         html += '<img src="' + movie.medium_cover_image + '" alt="' + movie.title_long + '">';
-                        html += '<p>تقييم الفيلم: ' + movie.rating + '</p>';
-                        html += '<p>التصنيف: ' + movie.genres.join(', ') + '</p>';
-                        html += '<div class="download-links">';
+                        html += '<p style="font-size: 18px; font-weight: bold;">تقييم الفيلم : ' + movie.rating + ' <img src="https://cdn-icons-png.freepik.com/512/5977/5977585.png" alt="IMDb Icon" class="custom-imdb-icon"></p>';
+						html += '<p style="font-size: 16px; font-weight: bold;">التصنيف : ' + movie.genres.join(' / ') + '</p>';                        html += '<div class="download-links">';
                         movie.torrents.forEach(function(torrent){
                             var downloadLink;
                             if(playerOption === 'webtor') {
