@@ -15,9 +15,9 @@
 
 
     <title>بحث عن الأفلام</title>
-    <style>
+	<style>
 
-    .custom-imdb-icon {
+ 	.custom-imdb-icon {
     width: 40px; /* تعيين عرض الصورة */
     height: auto; /* تعيين الارتفاع ليكون تلقائيًا مع الحفاظ على النسبة */
     position: relative; /* تعيين العنصر الأساسي بوضع نسبي */
@@ -25,7 +25,7 @@
 }
 
 
-        .download-links a {
+	 .download-links a {
     display: inline-block;
     margin-right: 10px;
     background-color: #007bff;
@@ -45,7 +45,13 @@ body {
     background-color: var(--light-bg-color);
     color: var(--light-font-color);
     transition: background-color 0.3s, color 0.3s;
-    
+	-webkit-touch-callout: none; /* للتأكد من عدم فتح قائمة النصائح على أجهزة iOS */
+	-webkit-user-select: none; /* تعطيل التحديد على متصفحات WebKit مثل Safari و Chrome */
+	-moz-user-select: none; /* تعطيل التحديد على متصفحات Firefox */
+	-ms-user-select: none; /* تعطيل التحديد على متصفحات Internet Explorer/Edge */
+	user-select: none; /* تعطيل التحديد العام */    
+    overflow-x: hidden;
+    touch-action: pan-y; /* لمنع التكبير عند السحب الأفقي */
 }
 	    
 form {
@@ -840,161 +846,162 @@ body {
         .comic-button {
             color: fff; /* لون النص الأسود للزر */
         }
+
     </style>
 </head>
 <body>
-    <label class="switch">
-        <input class="toggle" type="checkbox" onclick="toggleTheme()">
-        <span class="slider"></span>
-    </label>
 
-    <div class="container center">
-        <div class="rope center">
-            <div class="legs center">
-                <div class="boot-l"></div>
-                <div class="boot-r"></div>
+<label class="switch">
+    <input class="toggle" type="checkbox" onclick="toggleTheme()">
+    <span class="slider"></span>
+</label>
+
+<div class="container center">
+    <div class="rope center">
+        <div class="legs center">
+            <div class="boot-l"></div>
+            <div class="boot-r"></div>
+        </div>
+        <div class="costume center">
+            <div class="spider">
+                <div class="s1 center"></div>
+                <div class="s2 center"></div>
+                <div class="s3"></div>
+                <div class="s4"></div>
             </div>
-            <div class="costume center">
-                <div class="spider">
-                    <div class="s1 center"></div>
-                    <div class="s2 center"></div>
-                    <div class="s3"></div>
-                    <div class="s4"></div>
-                </div>
-                <div class="belt center"></div>
-                <div class="hand-r"></div>
-                <div class="hand-l"></div>
-                <div class="neck center"></div>
-                <div class="mask center">
-                    <div class="eye-l"></div>
-                    <div class="eye-r"></div>
-                </div>
-                <div class="cover center"></div>
+            <div class="belt center"></div>
+            <div class="hand-r"></div>
+            <div class="hand-l"></div>
+            <div class="neck center"></div>
+            <div class="mask center">
+                <div class="eye-l"></div>
+                <div class="eye-r"></div>
             </div>
+            <div class="cover center"></div>
         </div>
     </div>
+</div>
 
-    <br><br><br><br><br><br><br><br><br>
-    <h1 class="readex-pro-custom">البحث عن الأفلام</h1>
-    <h1 class="madimi-one-regular">Searching for movies</h1>
+<br><br><br><br><br><br><br><br><br>
+<h1 class="readex-pro-custom">البحث عن الأفلام</h1>
+<h1 class="madimi-one-regular">Searching for movies</h1>
 
-    <form id="searchForm">
-        <div class="input-container center">
-            <input type="text" name="text" class="input" placeholder="بحث...">
-            <span class="icon"> 
-                <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                    <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                    <g id="SVGRepo_iconCarrier">
-                        <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                        <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </g>
-                </svg>
-            </span>
-        </div>
+<form id="searchForm">
+    <div class="input-container center">
+        <input type="text" name="text" class="input" placeholder="بحث...">
+        <span class="icon"> 
+            <svg width="19px" height="19px" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                <g id="SVGRepo_iconCarrier">
+                    <path opacity="1" d="M14 5H20" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path opacity="1" d="M14 8H17" stroke="#000" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path d="M21 11.5C21 16.75 16.75 21 11.5 21C6.25 21 2 16.75 2 11.5C2 6.25 6.25 2 11.5 2" stroke="#000" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                    <path opacity="1" d="M22 22L20 20" stroke="#000" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"></path>
+                </g>
+            </svg>
+        </span>
+    </div>
 
-        <br><br><br>
-        <select id="player-select">  
-            <option value="webtor">Webtor</option>
-            <option value="download">تنزيل</option>
-        </select>&nbsp;
+    <br><br><br>
+    <select id="player-select">  
+        <option value="webtor">Webtor</option>
+        <option value="download">تنزيل</option>
+    </select>&nbsp;
 
-        <button type="submit" class="comic-button">بحث</button>
-        <div><br></div>
-    </form>
+    <button type="submit" class="comic-button">بحث</button>
+    <div><br></div>
+</form>
 
-    <div id="results"></div>
+<div id="results"></div>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script>
-        $(document).ready(function(){
-            $('#searchForm').submit(function(event){
-                event.preventDefault();
-                searchMovies();
-            });
-
-            $('#player-select').change(function() {
-                searchMovies();
-            });
-
-            $(document).on('click', '.translate-btn', function() {
-                var imdbCode = $(this).data('imdb');
-                window.location.href = 'https://yifysubtitles.ch/movie-imdb/' + imdbCode;
-            });
-
-            function searchMovies() {
-                var searchTerm = $('.input').val();
-                var playerOption = $('#player-select').val();
-
-                if (searchTerm.trim() === '') {
-                    $('.input').addClass('error');
-                    $('.input').attr('placeholder', 'يجب ادخال اسم الفيلم');
-                    return;
-                } else {
-                    $('.input').removeClass('error');
-                }
-
-                $.ajax({
-                    url: 'https://yts.mx/api/v2/list_movies.json',
-                    method: 'GET',
-                    data: {
-                        query_term: searchTerm
-                    },
-                    success: function(response){
-                        displayResults(response.data.movies, playerOption);
-                    },
-                    error: function(){
-                        $('.input').addClass('error');
-                        $('.input').attr('placeholder', 'حدث خطأ أثناء جلب البيانات. يرجى المحاولة مرة أخرى.');
-                    }
-                });
-            }
-
-            function displayResults(movies, playerOption){
-                var html = '';
-                if(movies.length > 0){
-                    movies.forEach(function(movie){
-                        html += '<div class="movie">';
-                        html += '<h2>' + movie.title_long + '</h2>';
-                        html += '<img src="' + movie.medium_cover_image + '" alt="' + movie.title_long + '">';
-                        html += '<p style="font-size: 18px; font-weight: bold;">تقييم الفيلم : ' + movie.rating + ' <img src="https://cdn-icons-png.freepik.com/512/5977/5977585.png" alt="IMDb Icon" class="custom-imdb-icon"></p>';
-						html += '<p style="font-size: 16px; font-weight: bold;">التصنيف : ' + movie.genres.join(' / ') + '</p>';                        html += '<div class="download-links">';
-                        movie.torrents.forEach(function(torrent){
-                            var downloadLink;
-                            if(playerOption === 'webtor') {
-                                downloadLink = "https://webtor.io/#/" + torrent.url.replace("https://yts.mx/torrent/download/", "");
-                            } else if(playerOption === 'download') {
-                                downloadLink =  torrent.url;
-                            }
-                            html += '<a href="' + downloadLink + '">' + torrent.quality + ' ' + torrent.type + '</a>';
-                        });
-                        html += '</div>';
-                        html += '<div class="translate-container">';
-                        html += '<button class="translate-btn" data-imdb="' + movie.imdb_code + '">CC</button>';
-                        html += '</div>';
-                        html += '</div>';
-                    });
-                } else {
-                    html = '<p>لا توجد نتائج لعرضها.</p>';
-                }
-                $('#results').html(html);
-            }
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+    $(document).ready(function(){
+        $('#searchForm').submit(function(event){
+            event.preventDefault();
+            searchMovies();
         });
 
-        function toggleTheme() {
-            const body = document.body;
-            const toggle = document.querySelector('.toggle');
+        $('#player-select').change(function() {
+            searchMovies();
+        });
 
-            if (toggle.checked) {
-                body.style.backgroundColor = 'var(--dark-bg-color)';
-                body.style.color = 'var(--dark-font-color)';
+        $(document).on('click', '.translate-btn', function() {
+            var imdbCode = $(this).data('imdb');
+            window.location.href = 'https://yifysubtitles.ch/movie-imdb/' + imdbCode;
+        });
+
+        function searchMovies() {
+            var searchTerm = $('.input').val();
+            var playerOption = $('#player-select').val();
+
+            if (searchTerm.trim() === '') {
+                $('.input').addClass('error');
+                $('.input').attr('placeholder', 'يجب ادخال اسم الفيلم');
+                return;
             } else {
-                body.style.backgroundColor = 'var(--light-bg-color)';
-                body.style.color = 'var(--light-font-color)';
+                $('.input').removeClass('error');
             }
+
+            $.ajax({
+                url: 'https://yts.mx/api/v2/list_movies.json',
+                method: 'GET',
+                data: {
+                    query_term: searchTerm
+                },
+                success: function(response){
+                    displayResults(response.data.movies, playerOption);
+                },
+                error: function(){
+                    $('.input').addClass('error');
+                    $('.input').attr('placeholder', 'حدث خطأ أثناء جلب البيانات. يرجى المحاولة مرة أخرى.');
+                }
+            });
         }
-    </script>
+
+        function displayResults(movies, playerOption){
+            var html = '';
+            if(movies.length > 0){
+                movies.forEach(function(movie){
+                    html += '<div class="movie">';
+                    html += '<h2>' + movie.title_long + '</h2>';
+                    html += '<img src="' + movie.medium_cover_image + '" alt="' + movie.title_long + '">';
+                    html += '<p style="font-size: 18px; font-weight: bold;">تقييم الفيلم : ' + movie.rating + ' <img src="https://cdn-icons-png.freepik.com/512/5977/5977585.png" alt="IMDb Icon" class="custom-imdb-icon" onclick="openIMDb(\'' + movie.imdb_code + '\')"></p>';
+                    html += '<p style="font-size: 16px; font-weight: bold;">التصنيف : ' + movie.genres.join(' / ') + '</p>';                        
+                    html += '<div class="download-links">';
+                    movie.torrents.forEach(function(torrent){
+                        var downloadLink;
+                        if(playerOption === 'webtor') {
+                            downloadLink = "https://webtor.io/#/" + torrent.url.replace("https://yts.mx/torrent/download/", "");
+                        } else if(playerOption === 'download') {
+                            downloadLink =  torrent.url;
+                        }
+                        html += '<a href="' + downloadLink + '">' + torrent.quality + ' ' + torrent.type + '</a>';
+                    });
+                    html += '</div>';
+                    html += '<div class="translate-container">';
+                    html+= '<button class="translate-btn" data-imdb="' + movie.imdb_code + '">CC</button>'; html += '</div>'; html += '</div>'; }); } else { html = '<p>لا توجد نتائج لعرضها.</p>'; } $('#results').html(html); } });function toggleTheme() {
+    const body = document.body;
+    const toggle = document.querySelector('.toggle');
+
+    if (toggle.checked) {
+        body.style.backgroundColor = 'var(--dark-bg-color)';
+        body.style.color = 'var(--dark-font-color)';
+    } else {
+        body.style.backgroundColor = 'var(--light-bg-color)';
+        body.style.color = 'var(--light-font-color)';
+    }
+}
+
+function openIMDb(imdbCode) {
+    window.open('https://www.imdb.com/title/' + imdbCode, '_blank');
+}
+
+document.addEventListener('gesturestart', function (e) {
+    e.preventDefault();
+});
+
+</script>
 </body>
 </html>
