@@ -1023,11 +1023,13 @@ body {
                     html += '<div class="download-links">'; 
                     movie.torrents.forEach(function(torrent){ 
                         var downloadLink; 
-                        if(playerOption === 'webtor') { 
-                            downloadLink = "https://webtor.io/#/" + torrent.url.replace("https://yts.mx/torrent/download/", ""); 
-                        } else if(playerOption === 'download') { 
-                            downloadLink =  torrent.url; 
-                        } 
+							
+						if (playerOption === 'webtor') { 
+    						downloadLink = "https://webtor.io/" + torrent.url.replace("https://yts.mx/torrent/download/", "").toLowerCase(); 
+						} else if (playerOption === 'download') { 
+    						downloadLink = torrent.url; 
+						} 	
+
                         html += '<a href="' + downloadLink + '">' + torrent.quality + ' ' + torrent.type + '</a>'; 
                     }); 
                     html += '</div>'; 
